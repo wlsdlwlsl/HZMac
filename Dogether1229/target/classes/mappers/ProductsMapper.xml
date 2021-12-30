@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ProductsDAO">
+
+
+	<select id="bestProductsList" resultType="com.dogether.domain.ProductsVO">
+		SELECT p.ProductID ,p.ProductName ,p.ProductPrice,p.product_realfname  
+		FROM Orders o NATURAL JOIN Products p 
+		GROUP BY o.ProductID 
+		ORDER BY count(*) DESC
+		Limit 4
+	</select>
+
+	
+	<select id="getProductsList" resultType="com.dogether.domain.ProductsVO">
+		SELECT * FROM products
+	</select>
+	
+	<select id="detailProduct" parameterType="com.dogether.domain.ProductsVO" resultType="com.dogether.domain.ProductsVO">
+		SELECT * FROM products WHERE ProductID = #{productID}
+	</select>
+
+
+
+	<select id="productCheck" resultType="com.dogether.domain.Shopping_cartVO" parameterType="com.dogether.domain.Shopping_cartVO">
+		select * from shopping_cart where MemberID=#{memberID} and ProductID = #{productID}
+	</select>
+
+
+
+
+
+	<insert id="insertIntoCart" parameterType="com.dogether.domain.ProductsVO">
+		INSERT INTO shopping_cart
+		VALUES (#{memberID},#{productID},#{productQuantity})
+	</insert>
+
+
+
+	<update id="updateQuantity" parameterType="hashmap">
+		UPDATE shopping_cart
+		SET ProductQuantity = #{productQuantity} where MemberID=#{memberID} and ProductID = #{productID}
+	</update>
+
+	<select id="showUserInfo" resultType="com.dogether.domain.MemberVO" parameterType="com.dogether.domain.MemberVO" >
+		SELECT * FROM MEMBER WHERE MemberID = #{memberID}
+	</select>
+
+
+	<insert id="deleteFromCart" parameterType="com.dogether.domain.ProductsVO">
+		DELETE FROM shopping_cart
+		<choose>
+			<when test="productID != null">
+				WHERE MemberID = #{memberID} and ProductID = #{productID}
+			</when>
+			<otherwise>
+				WHERE MemberID = #{memberID}
+			</otherwise>
+		</choose>
+	</insert>
+
+
+	<select id="getShoppingCartList" resultType="hashmap" parameterType="com.dogether.domain.MemberVO">
+		select Product_realfname,ProductName,ProductPrice,ProductQuantity,ProductID
+		from shopping_cart natural join products 
+		where MemberID = #{memberID}
+	</select>
+	
+	
+	<select id="afterGetShoppingCartList" resultType="com.dogether.domain.Shopping_cartVO" parameterType="string">
+		select * from shopping_cart where MemberID = #{memberID}
+	</select>
+	
+	<insert id="insertOrderList" parameterType="hashmap">
+		INSERT INTO orders(OrderID,MemberID,ProductID)
+		VALUES (#{orderID},#{memberID},#{productID})
+	</insert>
+	
+	<!-- ########## 관리자페이지 상품 추가하기 ########## -->
+	<insert id="productsInsert" parameterType="com.dogether.domain.ProductsVO">
+		INSERT INTO products (ProductID,ProductName,ProductPrice,ProductContent,Product_fname,Product_realfname,Product_fsize)
+		VALUES (#{productID},#{productName},#{productPrice},#{productContent},#{product_fname},#{product_realfname},#{product_fsize})
+	</insert>
+	
+	<!-- ########## 관리자페이지 상품 수정하기 ########## -->
+	<update id="productsUpdate" parameterType="com.dogether.domain.ProductsVO">
+		UPDATE products
+		SET ProductName = #{productName}, ProductPrice = #{productPrice}, ProductContent = #{productContent} 
+		WHERE ProductID = #{productID}
+	</update>
+	
+	<!-- ########## 관리자페이지 상품 삭제하기 ########## -->
+	<delete id="productsDelete" parameterType="com.dogether.domain.ProductsVO">
+		DELETE FROM products
+		WHERE ProductID = #{productID}
+	</delete>
+</mapper>

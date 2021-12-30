@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="runningGooDAOMapper">
+
+	<insert id="createRunningGooRoom" parameterType="com.dogether.domain.RunningGooVO">
+		INSERT INTO runninggoo(roomnumber, location, memberid, MaxMembers, SportsType,RunningDistance,AgeGeneration,SportsTime,LocationLat,LocationLong,HostComment,meetingTime, deposit)
+		VALUES(#{roomNumber},#{location},#{memberID}, #{maxMembers},#{sportsType}, #{runningDistance}, #{ageGeneration}, #{sportsTime}, #{locationLat}, #{locationLong}, #{hostComment},#{meetingTime},5000)
+	</insert>
+	
+	<insert id="createRunningGooRoomNumber"  parameterType="com.dogether.domain.RunningGooVO">
+		INSERT INTO runninggoo_number VALUE(RoomNumber);
+	</insert>
+	
+	<select id="getRunningGooRoomNumber" resultType="integer">
+		SELECT * FROM runninggoo_number ORDER BY RoomNumber DESC LIMIT 1;
+	</select>
+	
+	<select id="getRunningGooList" resultType="com.dogether.domain.RunningGooVO">
+		SELECT * FROM runninggoo WHERE hostYN = 'Y' GROUP BY RoomNumber
+		<choose>
+			<when test="sortTypeRNG==0">ORDER BY RoomNumber DESC</when>
+			<when test="sortTypeRNG==1">ORDER BY meetingTime DESC</when>
+		</choose>
+	</select>
+	
+	<select id="getRunningGooRoomCount" resultType="integer">
+		SELECT COUNT(*) FROM runninggoo;
+	</select>
+	
+	<select id="getMemberJoinRngList" resultType="integer" parameterType="com.dogether.domain.MemberVO">
+      SELECT point
+      FROM member
+      WHERE MemberID = #{memberID};
+   </select>
+   
+   <select id="bringBasicRngRoomInfo" resultType="com.dogether.domain.RunningGooVO">
+		SELECT * FROM runninggoo WHERE RoomNumber = #{roomNumber} GROUP BY RoomNumber;
+	</select>
+	
+	<insert id="CreateRunningGooMemberInsert" parameterType="com.dogether.domain.RunningGooVO">
+		INSERT INTO runninggoo(roomNumber,location,memberID,memberPendingStatusYN,
+		currentMembers,maxMembers, hostYN, sportsType, runningDistance, ageGeneration, sportsTime, 
+		locationLat, locationLong, hostComment,meetingTime,deposit) 
+		VALUES(#{roomNumber},#{location},#{memberID},#{memberPendingStatusYN},
+		#{currentMembers},#{maxMembers}, #{hostYN}, #{sportsType}, #{runningDistance}, #{ageGeneration}, #{sportsTime}, 
+		#{locationLat}, #{locationLong}, #{hostComment},#{meetingTime},5000)
+	</insert>
+	
+	<select id="viewJoinMemberList" parameterType="integer" resultType="hashmap">
+     SELECT roomNumber, memberID, Birthday, Gender, UserName, NickName, PhoneNumber 
+     from runninggoo r natural join member m 
+	 where r.MemberID = m.MemberID and RoomNumber = #{roomNum} and HostYN ='N' and MemberPendingStatusYN = 'N'
+   </select>
+   
+   <select id="viewNotYetJoinMemberList" parameterType="integer" resultType="hashmap">
+     SELECT roomNumber , memberID, Birthday, Gender, UserName, NickName, PhoneNumber 
+     from runninggoo r natural join member m
+	 where r.MemberID = m.MemberID and RoomNumber = #{roomNum} and HostYN ='N' and MemberPendingStatusYN = 'Y'
+   </select>
+   
+   <update id="upadateRunningGooJoinMemberInfo" parameterType="hashmap">
+   		UPDATE runninggoo 
+		SET currentMembers = currentMembers+1,
+		MemberPendingStatusYN = 'N'
+		WHERE memberid = #{memberid}
+		AND roomnumber = #{roomnumber}
+   </update>
+   
+   <!-- 런닝구방 + 프로필사진 출력 (관리자페이지)-->
+   <select id="getRNGListWithProfile" resultType="hashmap" parameterType="com.dogether.domain.RunningGooVO">
+      SELECT *
+      FROM runninggoo NATURAL JOIN member
+      <choose>
+			<when test="sortTypeRNG==0">ORDER BY RoomNumber DESC</when>
+			<when test="sortTypeRNG==1">ORDER BY meetingTime DESC</when>
+		</choose>
+   </select>
+   
+   <!-- 런닝구방 삭제 (관리자페이지)-->
+   <delete id="deleteRNG" parameterType="com.dogether.domain.RunningGooVO">
+		DELETE FROM runninggoo
+		WHERE RoomNumber = #{roomNumber}
+	</delete>
+	
+</mapper>

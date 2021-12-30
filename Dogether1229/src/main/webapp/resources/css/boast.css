@@ -1,0 +1,412 @@
+body{
+	margin:0px;
+}
+
+nav .logo {
+	float: left;
+	margin-left: 30px;
+}
+
+nav .logo a {
+	font-size: 28px;
+	line-height: 80px;
+	text-transform: uppercase;
+	color: #fff;
+	text-decoration: none;
+	letter-spacing: 0.5px;
+}
+
+nav .logo em {
+	font-style: normal;
+	font-weight: 200;
+}
+
+nav {
+	background: black;
+	height: 80px;
+	position: fixed;
+	width: 100%;
+	left: 0;
+	top: 0;
+	left: 0;
+	z-index: 300;
+	box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.menu-icon {
+	background: transparent;
+	border: 1px solid #fff;
+	width: 50px;
+	height: 50px;
+	margin: 15px 39px 0 auto;
+	position: relative;
+	cursor: pointer;
+	transition: background 0.5s;
+	border-radius: 5px;
+}
+
+.menu-icon span, .menu-icon span:before, .menu-icon span:after {
+	cursor: pointer;
+	border-radius: 1px;
+	height: 2px;
+	width: 35px;
+	background: white;
+	position: absolute;
+	left: 15%;
+	top: 50%;
+	display: block;
+	content: '';
+	transition: all 0.5s ease-in-out;
+}
+
+.menu-icon span:before {
+	left: 0;
+	top: -10px;
+}
+
+.menu-icon span:after {
+	left: 0;
+	top: 10px;
+}
+
+.menu-icon.active {
+	background: rgba(250, 250, 250, 0.2);
+}
+
+.menu-icon.active span {
+	background-color: transparent;
+}
+
+.menu-icon.active span:before, .menu-icon.active span:after {
+	top: 0;
+}
+
+.menu-icon.active span:before {
+	transform: rotate(135deg);
+}
+
+.menu-icon.active span:after {
+	transform: rotate(-135deg);
+}
+
+.mainContainer {
+	max-width: 600px;
+	margin: 0 auto;
+	border: 1px solid black;
+	padding-bottom: 50px;
+	margin-top:	7%;
+	margin-bottom: 5%;
+	border-radius:20px;
+}
+
+.plusButton {
+	margin: 0;
+	width: 40px;
+	height: 40px;
+}
+
+.plusdiv {
+	right: 10px;
+	margin: 10px;
+	height: 40px;
+	text-align: left;
+
+}
+
+.card {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	margin-left: -1px;
+	margin-right: 0px;
+	position: relative;
+	border-radius:20px;
+
+}
+
+#userpic {
+	width: 20px;
+	height: 20px;
+}
+
+#userdiv {
+	margin: 15px;
+	margin-left:30px;
+	display: block;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#content {
+	margin: 30px;
+	border: 1px solid black;
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+#pic {
+	position: relative;
+	width: 100%;
+	height: 600px;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.likeButton {
+	box-shadow: 0px 1px 0px 0px #f0f7fa;
+	background: linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+	background-color: #33bdef;
+	border-radius: 6px;
+	border: 1px solid #057fd0;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 6px 24px;
+	text-decoration: none;
+	text-shadow: 0px -1px 0px #5b6178;
+}
+
+.likeButton:hover {
+	background: linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
+	background-color: #019ad2;
+}
+
+.likeButton:active {
+	position: relative;
+	top: 1px;
+}
+
+#usernameforcontent {
+	font-size: 15px;
+	font-weight: bold;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#boardContent {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#likeCount {
+	font-weight: bold;
+	margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#cardContent {
+	margin-left: 30px;
+	margin-right: 30px;
+	margin-bottom: 25px;
+}
+
+#commentside {
+	margin-top:5px;
+	display: inline-block;
+	width: 100%;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+}
+
+#commentside.comment {
+	width: 100%;
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
+.comments {
+	margin-left: 0px;
+	margin-right: 30px;
+	width: 100%;
+	display: inline-block;
+}
+
+#replycomment {
+	display: inline-block;
+}
+
+ul#forid{
+	padding-left: 0px;
+	margin-bottom:3px;
+}
+
+li.reply{
+	display: inline;
+	list-style: none;
+}
+
+ul li#commentwriter {
+	display: inline;
+	list-style: none;
+}
+
+#commentwriter {
+	font-weight: bold;
+}
+
+input.comment {
+	width: 60%;
+}
+
+#writernameforcomment {
+	display: inline-flex;
+	width: 15%;
+	font-weight: bold;
+}
+
+#commentbutton {
+	width: 20%;
+}
+
+<!--footer-->
+	#footer {
+	position: fixed;
+	bottom: 0px;
+	left: 0;
+	width: 100%;
+	bottom: 0px;
+	border-top: 4px;
+}
+.postdiv{
+	position:relative;
+	float:right;
+	margin-bottom:10px;
+	
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+  }
+  
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+  .wrap {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  
+  #loginwrap{
+    width: 30%;
+  }
+  .login {
+    height: 600px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  h2 {
+    color: tomato;
+    font-size: 2em;
+  }
+  .login_sns {
+    padding: 20px;
+    display: flex;
+  }
+  
+  .login_sns li {
+    padding: 0px 15px;
+  }
+  
+  .login_sns a {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50px;
+    background: white;
+    font-size: 20px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4), -3px -3px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login_id {
+    margin-top: 20px;
+    width: 80%;
+  }
+  
+  .login_id input {
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    margin-top: 10px;
+    padding: 0px 20px;
+    border: 1px solid lightgray;
+    outline: none;
+  }
+  
+  .login_pw {
+    margin-top: 20px;
+    width: 80%;
+  }
+  
+  .login_pw input {
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    margin-top: 10px;
+    padding: 0px 20px;
+    border: 1px solid lightgray;
+    outline: none;
+  }
+  
+  .login_etc {
+    padding: 10px;
+    width: 80%;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+  }
+  
+  .submit {
+    margin-top: 50px;
+    width: 80%;
+  }
+  .join {
+    margin-top: 50px;
+    width: 80%;
+  }
+  .join input{
+   width: 100%;
+    height: 50px;
+    border: 0;
+    outline: none;
+    border-radius: 40px;
+    background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
+    color: white;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+  }
+  .submit input {
+    width: 100%;
+    height: 50px;
+    border: 0;
+    outline: none;
+    border-radius: 40px;
+    background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
+    color: white;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+  }
+

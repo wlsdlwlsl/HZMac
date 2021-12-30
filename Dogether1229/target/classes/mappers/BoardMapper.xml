@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardDAO">
+
+	<select id="getBoardList" resultType="BoardVO" parameterType="BoardVO">
+			SELECT *
+			FROM BOARD 
+			
+		<if test="memberID!=null">
+			WHERE memberID = #{memberID}
+		</if>
+		
+		<choose>
+			<when test="sortTypeBST==0">ORDER BY BoardID DESC</when>
+			<when test="sortTypeBST==1">ORDER BY board_like_count DESC</when>
+		</choose>
+	</select>
+
+	<select id="getReplyList" resultType="Board_ReplyVO">
+		SELECT *
+		FROM board_reply
+	</select>
+
+	<select id="getLikeList" parameterType="Board_LikeVO" resultType="Board_LikeVO">
+		SELECT *
+		FROM board_like
+		WHERE LIKER = #{liker}
+	</select>
+
+	<delete id="deleteLike" parameterType="Board_LikeVO">
+		DELETE 
+		FROM board_like
+		WHERE liker = #{liker}
+		AND boardID=#{boardID}
+	</delete>
+	
+	<insert id="insertLike" parameterType="Board_LikeVO">
+		insert into board_like (BoardID,liker) 
+		values (#{boardID},#{liker})
+	
+	</insert>
+	
+	<update id="updateCount" parameterType="Board_LikeVO">
+		UPDATE board
+		set Board_like_count = #{board_like_no}
+		WHERE boardID = #{boardID};
+	</update>
+	
+	<insert id="insertBoard" parameterType="BoardVO">
+		INSERT INTO BOARD(MemberID, BoardContent ,Board_fname, Board_realfname ,BOARD_FSIZE)
+		VALUE(#{memberID},#{boardContent},#{board_fname},#{board_realfname},#{board_fsize})
+	</insert>
+	
+	<insert id="insertReply" parameterType="Board_ReplyVO">
+		INSERT INTO BOARD_REPLY(BOARDID,REPLYER, REPLY) 
+		VALUE(#{boardID},#{replyer},#{reply})
+	</insert>
+	
+	<!-- 자랑하기 삭제 (관리자페이지) -->
+	<delete id="deleteBST" parameterType="BoardVO">
+		DELETE FROM board
+		WHERE BoardID = #{boardID}
+	</delete>
+	
+</mapper>

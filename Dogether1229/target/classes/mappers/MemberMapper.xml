@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemberDAO">
+	
+	<select id="id_check" resultType="MemberVO" parameterType="MemberVO" >
+			SELECT *
+			FROM MEMBER
+			WHERE MemberID = #{memberID} 
+	</select> 
+	
+	<select id="nickName_check" resultType="MemberVO" parameterType="MemberVO" >
+			SELECT *
+			FROM MEMBER
+			WHERE NickName = #{nickName} 
+	</select>
+	
+	
+	<select id="getMemberInfo" resultType="MemberVO" parameterType="string">
+			SELECT *
+			FROM MEMBER
+			WHERE MemberID = #{memberID} 
+	</select>
+	
+	<update id="updatePoint" parameterType="hashmap">
+		UPDATE member SET Point = Point + #{price} WHERE MemberID = #{memberID};
+	</update>
+	
+	
+	<insert id="memberinsert" parameterType="MemberVO">
+		INSERT INTO member(MemberID,PW,Email,NickName,UserName,PhoneNumber,
+							Birthday,Gender,Zipcode,BasicAddress,RestAddress,Member_fname,Member_realfname,Member_fsize)
+		VALUES(#{memberID}, #{pw}, #{email},#{nickName},#{userName},#{phoneNumber},#{birthday},
+							#{gender},#{zipCode},#{basicAddress},#{restAddress},#{member_fname},#{member_realfname},#{member_fsize})
+	</insert>
+	
+	<select id="memberLogin" resultType="MemberVO" parameterType="MemberVO" >
+		SELECT * FROM MEMBER
+		WHERE MemberID = #{memberID} AND pw = #{pw}
+	</select>
+	
+	<select id="getMemberList" resultType="MemberVO" parameterType="MemberVO">
+		SELECT *
+		FROM Member
+		<choose>
+			<when test="sortTypeMember==0">ORDER BY userName </when>
+			<when test="sortTypeMember==1">ORDER BY birthday </when>
+			<when test="sortTypeMember==2">WHERE blackListYN = 'Y'</when>
+		</choose>
+	</select> 
+	
+	
+	<select id="myBoardList" resultType="BoardVO" parameterType="string">
+			SELECT *
+			FROM BOARD 
+			WHERE MemberID = #{memberID}	
+	</select>
+	
+	<update id="updateMemberInfo" parameterType="MemberVO">
+			UPDATE member SET PW = #{pw},NickName = #{nickName},phoneNumber = #{phoneNumber},Zipcode = #{zipCode},
+			basicAddress = #{basicAddress},restAddress = #{restAddress},member_fname = #{member_fname},
+			member_realfname = #{member_realfname},member_fsize = #{member_fsize} WHERE MemberID = #{memberID}
+	</update>
+	
+	<!-- 회원 삭제(탈퇴)하기(관리자페이지) -->
+	<delete id="deleteMember" parameterType="MemberVO">
+		DELETE FROM member
+		WHERE MemberID = #{memberID}
+	</delete>
+	
+</mapper>

@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+#cartBtn {
+	background-color: black;
+}
+
+#mainBtn {
+	text-align: center;
+}
+
+#detailcartBtn {
+	background-color: black;
+	margin-right: 55px;
+}
+
+#detailcartBtn2 {
+	background-color: black;
+}
+
+#detailBtn {
+	text-align: right;
+}
+
+.foot {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	padding-bottom: 30px;
+}
+.owl-carousel{
+	z-index : 0;
+}
