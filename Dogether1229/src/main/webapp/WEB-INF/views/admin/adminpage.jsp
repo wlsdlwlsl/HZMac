@@ -42,7 +42,7 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
             	<ul class="sidebar-menu" style="padding:25px;">
-                    <li><a href="adminpage.do">첫페이지</a></li>
+                    <li><a href="#adminpage" id="adminpage">첫페이지</a></li>
                     <li><a href="#adminRNG" id="adminRNG">런닝구 관리</a></li>
                     <li><a href="#adminBST" id="adminBST">자랑하기 관리</a></li>
                     <li><a href="#adminMember" id="adminMember">회원 관리</a></li>
@@ -158,15 +158,6 @@
                                     <li class="page-item"><a class="adminProductInsert" href="#adminProductInsert">상품 추가하기</a></li>
                                 </ul>
                             </div>
-                            <!-- !!!!!!!!!!!!!!!! 페이지 이동 버튼  일단 보류!!!!!!!!!!!!!!!!-->
-                            <!-- <div class="float-right">
-                                <ul class="pagination pagination-sm mb-0">
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">»</a></li>
-                                </ul>
-                            </div> -->
                         </div>
                     </section> <!-- end 상단 메뉴 --> 
 
@@ -177,16 +168,16 @@
                                 <div class="card-body text-center" style="margin:auto;">
 	                                <!-- 여기부터 복사하기 -->
 	                                <!-- 첫페이지 그래프 띄우기 -->
-	                                <table border="2" style="margin:auto; width: 100%; height:100%;">
+	                                <table id="adminmain" border="2" style="margin:auto; width: 700px; height:300px;">
 	                                    <tr>
-	                                        <th>전체 회원수<br>그제 / 어제 / 오늘<br>가입자 & 탈퇴자 <br>bar차트</th>
-	                                        <th>전체 런닝구 매칭수<br>그제 / 어제 / 오늘<br>방개설일자별로 count(*)<br>bar차트</th>
-	                                        <th>전체 자랑하기 글수<br>개설일부터~현재까지 변동 추이(일자별)<br>line차트</th>
+	                                        <th>전체 회원 수</th>
+	                                        <th>전체 런닝구 매칭 건수</th>
+	                                        <th>전체 자랑하기 글 수</th>
 	                                    </tr>
 	                                    <tr>
-	                                        <td>전체가입자수 대비 당월가입자수(그 외는 기존가입자)<br>pie차트</td>
-	                                        <td>전체글수 대비 매칭완료수(memberPendingN)<br>pie차트</td>
-	                                        <td>방문자수<br>today / total<br>line차트</td>
+											<td align="center">${ memberCount }</td>
+											<td align="center">${ matchedCount }</td>
+											<td align="center">${ boastCount }</td>
 	                                    </tr>
 	                                </table>
                                     <!-- 런닝구  -->

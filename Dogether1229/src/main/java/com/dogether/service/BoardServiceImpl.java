@@ -54,4 +54,11 @@ public class BoardServiceImpl implements BoardService{
 		System.out.println("Service에서 자랑하기 삭제 호출함");
 		boardDAO.deleteBST(vo);		
 	}
+
+	@Override
+	public int getBoastCount() {
+		System.out.println("Service에서 자랑하기 글 수 호출함");
+		return boardDAO.getBoastCount();				
+	}
+	
 }

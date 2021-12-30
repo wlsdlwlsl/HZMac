@@ -7,7 +7,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.dogether.domain.MemberVO;
 import com.dogether.domain.RunningGooVO;
 
 @Repository
@@ -100,5 +99,13 @@ public class RunningGooDAOImpl implements RunningGooDAO {
 		System.out.println(vo.getRoomNumber()+"방삭제번호");
 		mybatis.delete("runningGooDAOMapper.deleteRNG", vo);
 	}
+
+	// 런닝구 총 매칭 건수(관리자페이지)
+	@Override
+	public int getMatchedCount() {
+		System.out.println("mybatis 런닝구 총 매칭 건수 호출함");
+		return mybatis.selectOne("runningGooDAOMapper.getMatchedCount");
+	}
 	
 }
+

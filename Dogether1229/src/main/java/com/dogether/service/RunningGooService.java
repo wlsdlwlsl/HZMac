@@ -3,7 +3,6 @@ package com.dogether.service;
 import java.util.HashMap;
 import java.util.List;
 
-import com.dogether.domain.MemberVO;
 import com.dogether.domain.RunningGooVO;
 
 public interface RunningGooService {
@@ -40,4 +39,7 @@ public interface RunningGooService {
 	
 	// 런닝구 방 삭제(관리자페이지)
 	public void deleteRNG(RunningGooVO vo);
+	
+	// 런닝구 총 매칭 건수(관리자페이지)
+	public int getMatchedCount();
 }

@@ -111,7 +111,7 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public void productsUpdate(ProductsVO vo) {
 		System.out.println("mybatis 상품 수정하기 호출함");
-		mybatis.update("ProductsDAO.productsUpdate");
+		mybatis.update("ProductsDAO.productsUpdate", vo);
 	}
 	
 	//관리자페이지 상품 삭제

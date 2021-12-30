@@ -68,4 +68,11 @@
 		WHERE MemberID = #{memberID}
 	</delete>
 	
+	<!--  -->
+	<select id="getMemberCount" resultType="integer">
+			SELECT COUNT(*)
+			FROM  member
+	</select>
+	
+	
 </mapper>

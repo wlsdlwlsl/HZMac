@@ -48,4 +48,13 @@ public class MemberServiceImpl implements MemberService{
 		memberDAO.deleteMember(vo);		
 	}
 
+	//총 회원 수(관리자페이지)
+	@Override
+	public int getMemberCount() {
+		System.out.println("Service에서 총 회원 수 호출함");
+		return memberDAO.getMemberCount();		
+	}
+	
+	
+
 }

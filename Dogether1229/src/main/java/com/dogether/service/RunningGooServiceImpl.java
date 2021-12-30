@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dogether.dao.RunningGooDAO;
-import com.dogether.domain.MemberVO;
 import com.dogether.domain.RunningGooVO;
 
 @Service
@@ -78,6 +77,13 @@ public class RunningGooServiceImpl implements RunningGooService {
 	public void deleteRNG(RunningGooVO vo) {
 		System.out.println("Service에서 런닝구방 삭제 호출함");
 		runningGooDAO.deleteRNG(vo);		
+	}
+
+	// 런닝구 총 매칭 건수(관리자페이지)
+	@Override
+	public int getMatchedCount() {
+		System.out.println("Service에서 런닝구 총 매칭 건수 호출함");
+		return runningGooDAO.getMatchedCount();
 	}
 	
 }

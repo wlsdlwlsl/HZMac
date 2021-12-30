@@ -13,5 +13,7 @@ public interface MemberDAO {
 	public int updateMemberInfo(MemberVO vo);//내정보 수정하기
 	// 회원 삭제(탈퇴)하기(관리자페이지)
 	public void deleteMember(MemberVO vo);
+	// 총 회원 수(관리자페이지)
+	public int getMemberCount();
 
 }

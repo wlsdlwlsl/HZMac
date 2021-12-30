@@ -52,5 +52,12 @@ public class MemberDAOImpl implements MemberDAO{
 		System.out.println("mybatis 회원 삭제(탈퇴) 호출함");
 		System.out.println(vo.getMemberID()+"회원번호");
 		mybatis.delete("MemberDAO.deleteMember", vo);		
+	}
+
+	@Override
+	public int getMemberCount() {
+		System.out.println("mybatis 총 회원 수 호출함");
+		return mybatis.selectOne("MemberDAO.getMemberCount");		
 	}	
+	
 }

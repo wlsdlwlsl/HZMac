@@ -83,4 +83,12 @@
 		WHERE RoomNumber = #{roomNumber}
 	</delete>
 	
+	<!-- 런닝구 총 매칭 건수(관리자페이지) -->
+	<select id="getMatchedCount" resultType="integer">
+		SELECT COUNT(RoomNumber) FROM runninggoo 
+		WHERE CurrentMembers = MaxMembers 
+		AND HostYN = 'Y'
+		AND MemberPendingStatusYN = 'N'
+		ORDER BY RoomNumber
+	</select>	
 </mapper>

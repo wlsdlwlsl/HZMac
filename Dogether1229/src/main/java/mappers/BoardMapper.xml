@@ -63,4 +63,9 @@
 		WHERE BoardID = #{boardID}
 	</delete>
 	
+	<!-- 자랑하기 글 수 (관리자페이지) -->
+	<select id="getBoastCount" resultType="integer">
+		SELECT COUNT(*) FROM board
+	</select>
+	
 </mapper>
