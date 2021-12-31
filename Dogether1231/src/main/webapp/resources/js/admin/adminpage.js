@@ -440,13 +440,19 @@ $(document).ready(function() {
     
  // ############ 상품 추가하기에서 등록 버튼을 클릭했을 때  ############
     $(document).on("click","#submitBtn",function(){
-         $("h1").hide();                     			  // 페이지명 안보이게 변경
+    	if($("#productImgFile").val() !="" && $("#productID").val() !="" && $("productName").val() !="" && $("#productPrice").val() !="" && $("#productContent").val()!=""){
+    	 $("h1").hide();                     			  // 페이지명 안보이게 변경
          $("#h1Products").show();             // 페이지명 보이게 변경
          $("table").hide();                            // 모든 테이블 숨기기
          $("#adminProductsList").show();      // 쇼핑몰 주문 리스트 테이블만 보이게 변경
          $(".divHide").hide();                       // 모든 정렬 안보이게 변경
          $(".float-right").show();            // 상품 추가하기 보이게 변경
          adminProductsList();
+    	}else{
+    		alert("공란을 채워주세요!");
+    		return;
+    	}
+        adminProductsList();
     }); //end click
     
     // ############ 상품 삭제 버튼을 클릭했을 때  ############

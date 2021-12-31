@@ -223,7 +223,7 @@
 									           </td>
 									           <td colspan="3" class="normal" id="profileTD">
 									              <div id="productImage_container"></div>
-									              <input type="file" onchange="setThumbnail(event);" name='file' maxlength="60" size="30" accept="image/jpeg,.jpg,.png" required>
+									              <input type="file" onchange="setThumbnail(event);" id="productImgFile" name='file' maxlength="60" size="30" accept="image/jpeg,.jpg,.png" required>
 									           </td>
 									        </tr>
 									        <tr> 

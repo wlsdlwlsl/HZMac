@@ -70,7 +70,7 @@
    <!-- 런닝구방 + 프로필사진 출력 (관리자페이지)-->
    <select id="getRNGListWithProfile" resultType="hashmap" parameterType="com.dogether.domain.RunningGooVO">
       SELECT *
-      FROM runninggoo NATURAL JOIN member
+      FROM runninggoo NATURAL JOIN member GROUP BY RoomNumber
       <choose>
 			<when test="sortTypeRNG==0">ORDER BY RoomNumber DESC</when>
 			<when test="sortTypeRNG==1">ORDER BY meetingTime DESC</when>
