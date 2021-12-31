@@ -1,0 +1,19 @@
+#content {
+    margin: 30px;
+    border: 1px solid black;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+}
+
+#titlee{
+	margin:20px;
+}
+
+#image_container{
+	
+}
+#image_container > img{
+	width:537px;
+	height:600px;
+}

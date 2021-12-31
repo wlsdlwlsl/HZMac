@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<!-- ##### mariadb ##### -->
+	<context:property-placeholder location="classpath:config/db.properties"/>
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driver}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+	</bean>
+
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	  <property name="dataSource" ref="dataSource" />
+	  <property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property>
+	    <property name="typeAliases">
+	  	<list>
+	  		<value>com.dogether.domain.AdminVO</value>
+	  		<value>com.dogether.domain.BoardVO</value>
+	  		<value>com.dogether.domain.Board_LikeVO</value>
+	  		<value>com.dogether.domain.Board_ReplyVO</value>
+	  		<value>com.dogether.domain.GymManagerVO</value>
+	  		<value>com.dogether.domain.GymTicketVO</value>
+	  		<value>com.dogether.domain.GymTrainerVO</value>
+	  		<value>com.dogether.domain.HealthCareCenterVO</value>
+	  		<value>com.dogether.domain.MemberVO</value>
+	  		<value>com.dogether.domain.OrderVO</value>
+	  		<value>com.dogether.domain.Runninggoo_EvaluationVO</value>
+	  		<value>com.dogether.domain.Runninggoo_replyVO</value>
+	  		<value>com.dogether.domain.RunningGooVO</value>
+	  		<value>com.dogether.domain.Shopping_cartVO</value>
+	  		<value>com.dogether.domain.SportsVO</value>
+	  	</list>
+	  </property>
+	 </bean>
+ 
+	 <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+	   <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
+	 </bean>
+
+</beans>
+

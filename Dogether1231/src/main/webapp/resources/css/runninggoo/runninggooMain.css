@@ -1,0 +1,146 @@
+
+p{
+    margin-bottom: 0;
+}
+
+.rn_room_list_wrap{
+	margin-top: 150px;
+}
+
+.runninggoo_card_inner{
+	position: relative;
+    padding: 15px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+	max-width: 440px;
+    border: 1px solid #000000;
+}
+
+.runninggoo_card_inner.create{
+    max-width: 40%;
+}
+
+.rn_card_user_profile{
+    margin-bottom: 20px;
+}
+
+.rn_profile_picture>img{
+    width: 30px;
+}
+
+.rn_profile_picture, .rn_profile_nickname, .rn_profile_eval, .rn_profile_memberCount{
+    display: inline-block;
+}
+
+.runninggoo_card_inner .kakao_map{
+    margin-bottom: 20px;
+}
+
+#map{
+	margin-bottom: 10px;
+}
+
+.rn_room_hashtag{
+	margin:0;
+    color: blue;
+}
+
+#jeonsong{
+	display:inline-block;
+	width:70px;
+	padding:5px;
+	background-color:black;
+	color:white;
+	text-align:center;
+	border-radius: 7px;
+	margin-left:10px;
+}
+
+.rn_card_host_comment_box{
+	position: absolute;
+	bottom: 90px;
+	left:80px;
+}
+
+.create_host_comment{
+	width: 400px;
+}
+
+.balloon {  
+ position:relative;
+ top:-15px;
+ left:60px;
+ margin: 50px;
+ padding: 10px;
+ width:200px; 
+ height:80px;
+ background:pink; 
+ border-radius: 10px;
+}
+.balloon:after { 
+ border-top:0px solid transparent; 
+ border-left: 10px solid transparent; 
+ border-right: 10px solid transparent; 
+ border-bottom: 10px solid pink; 
+ content:""; 
+ position:absolute;
+ top:-10px;
+ left:170px;  
+}
+
+#mbPoint{
+	display:inline-block;
+	width:50px;
+}
+
+.rn_plus_btn{
+    text-align: right;
+}
+
+.rn_plus_btn_link{
+    position: fixed;
+    right : 45px;
+    top : 100px;
+}
+
+.rn_plus_btn_link > img{
+    width: 40px;
+}
+
+.rn_card_sports_event_choice, .rn_card_sports_location_choice,
+.rn_card_sports_age_choice{
+    margin-bottom: 20px;
+}
+
+.rn_top_btn a {
+    position: fixed;
+    left: 30px;
+    top: 100px;
+    color: black;
+    text-decoration: none;
+}
+
+/* INPUT 태그 WIDTH 또는 HEIGHT 설정 */
+#keyword,#meeting-time{
+	max-width:40%;
+}
+#create_host_comment{
+	max-width:50%;
+	height: 60px;
+}
+
+
+/* 매칭이 완료된 방에 회색 배경 씌우기 */
+.matchedBG{
+	
+	background-color:rgba(0, 0, 0, 0.5);
+	background:rgba(0, 0, 0, 0.5);
+}
+
+.matched{
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrderDAO">
+	
+	<!-- 주문 List 출력(관리자페이지) -->
+	<select id="getOrderList" resultType="hashmap" parameterType="OrderVO">
+		SELECT Product_realfname,OrderID,MemberID,ProductID,OrderDate,BuyingConfirmYN,ReturnYN,returnstatus
+     	FROM orders NATURAL JOIN products
+		<choose>
+			<when test="sortTypeOrder==4">ORDER BY OrderDate</when>
+			<when test="sortTypeOrder==5">WHERE BuyingConfirmYN='Y'</when>
+			<when test="sortTypeOrder==1">WHERE returnStatus=1</when>
+			<when test="sortTypeOrder==2">WHERE returnStatus=2</when>
+			<when test="sortTypeOrder==3">WHERE returnStatus=3</when>
+		</choose>
+	</select> 
+	
+	<select id="getMyOrderList" resultType="hashmap" parameterType="string">
+		SELECT Product_realfname,OrderID,MemberID,ProductID,OrderDate,BuyingConfirmYN,ReturnYN,returnstatus
+     	FROM orders NATURAL JOIN products where MemberID = #{memberID}
+
+	</select>
+	
+	<update id="updatebuyingConfirm" parameterType="OrderVO">
+		UPDATE orders
+		SET BuyingConfirmYN = 'Y'
+		WHERE MemberID = #{memberID} AND OrderID = #{orderID} AND ProductID = #{productID};
+	</update>
+	
+</mapper>
