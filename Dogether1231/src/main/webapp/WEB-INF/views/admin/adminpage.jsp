@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- 반응형 템플릿 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>관리자 페이지입니다.</title>
     <!-- 공통 적용 -->
     <link rel="apple-touch-icon" href="apple-touch-icon.jpg">
@@ -53,7 +55,7 @@
         </div>
     </aside><!--sidebar end-->
     
-    <!-- 내브바 -->
+    <!-- 내브바추가 -->
     <nav>
 	   <div class="logo">
 	       <a href="index.jsp">DO<em>GETHER</em></a>

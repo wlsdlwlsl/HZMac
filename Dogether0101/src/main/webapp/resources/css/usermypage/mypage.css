@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+#profile_td {
+	height: 100%;
+}
+
+.normalbold {
+	font-family: "굴림", "돋움";
+	font-size: 12;
+	font-style: normal;
+	font-weight: bold;
+	text-decoration: none
+}
+
+.normalbold>div {
+	width: 100px;
+	font-size: 15px;
+}
+
+input {
+	font-size: 9pt;
+	color: #000000;
+	text-decoration: none;
+	border-style: groove;
+		border-top: none;
+	border-left : none;
+	border-right : none;
+	border-bottom : 3px solid black;
+}
+
+table {
+	width: 60%;
+	margin: auto;
+} /* 테이블 가운데 정렬  */
+#updatetable {
+	width: 60%;
+	cellspacing: 0;
+	cellpadding: 3px;
+	height: 20%;
+}
+
+.tb_ttl {
+	background: white;
+	color: black;
+	height: 0px;
+}
+
+.tb_ttl>img {
+	width: 100%;
+}
+
+.sidetd {
+	height: 10px;
+}
+
+#userinput {
+	text-align: left;
+}
+
+
+#fileselectBtn {
+	margin-top: 0;
+	border: 0;
+}
+
+#image_container>img {
+	width: 100px;
+	height: 100px;
+}
+#profileimage > img{
+	width : 50%;
+}
+#userOrderList{
+	width: 100%;
+}
+#RestAddress{
+	width:50%;
+}
+#submitBtn{
+	border-top: none;
+	border-left : none;
+	border-right : none;
+	border-bottom : 3px solid black;
+	width: 100px;
+	height: 30px;
+}

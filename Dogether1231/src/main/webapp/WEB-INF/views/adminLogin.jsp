@@ -72,7 +72,7 @@ body {
 			<p>아이디와 패스워드를 입력하세요.
 		</h4>
 
-		<form name="form" class="adminlogin" action="admin/"
+		<form name="form" class="adminlogin" action="admin"
 			method="post">
 			<table width="300" height="120">
 				<tr>

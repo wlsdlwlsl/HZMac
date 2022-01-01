@@ -1,26 +1,27 @@
 $(document).ready(function() {
-	//메인페이지  왼쪽 카테고리에서 클릭했을때!!
-	  $('#adminpage').click(function(evt){
-	    evt.preventDefault();				// a태그 링크 기능 무력화
-	    evt.stopPropagation();			// a태그 링크 기능 무력화
-	    $("h1").hide();						// 페이지명 안보이게 변경
-	    $("#h1Admin").show();		// 페이지명 보이게 변경
-
-	    $("table").hide();               // 모든 리스트 테이블을 삭제
-	    $("#adminmain").show();			// 런닝구 리스트 테이블만 보임으로 변경
-	       $(".divHide").hide();            // 모든 정렬 안보이게 변경
-	  }); //end click
+	// 메인페이지  왼쪽 카테고리에서 클릭했을때!!
+	$('#adminpage').click(function(evt){
+		evt.preventDefault();				// a태그 링크 기능 무력화
+		evt.stopPropagation();			// a태그 링크 기능 무력화
+		$("h1").hide();						// 페이지명 안보이게 변경
+		$("#h1Admin").show();		// 페이지명 보이게 변경
+		
+		$("table").hide();            	   // 모든 리스트 테이블을 삭제
+		$("#adminmain").show();	   // 런닝구 리스트 테이블만 보임으로 변경
+		~$(".divHide").hide();          // 모든 정렬 안보이게 변경
+	}); //end click
+   // ############ 런닝구 관리 메뉴를 클릭했을 때  ############
    function adminRNGList(){
       $.ajax({
          type : 'get',
          url : 'adminRNG.do',
-          dataType : 'json',                                 // db(서버)에서 받을 때 데이터 타입
+          dataType : 'json',                               							  // db(서버)에서 받을 때 데이터 타입
          data: { sortTypeRNG : $(".sortTypeRNG").val() },
           success : function(resultRNG){
             // ##### 동적으로 런닝구방 리스트 만들기 #####
-            var adminRNGList = $("#adminRNGList");               // adminpage.jsp에 table id를 변수에 저장
-            adminRNGList.empty();                           // 비워놓고 시작 ==> 다른 리스트가 있을 수 있으니까
-            adminRNGList.append(                           // list 테이블 헤더
+            var adminRNGList = $("#adminRNGList");                // adminpage.jsp에 table id를 변수에 저장
+            adminRNGList.empty();                          						// 비워놓고 시작 ==> 다른 리스트가 있을 수 있으니까
+            adminRNGList.append(                         					    // list 테이블 헤더
                "<tr>"
                + "<th width='150'>런닝구방번호</th>"
                + "<th width='200'>프로필사진</th>"
@@ -29,9 +30,9 @@ $(document).ready(function() {
                + "<th width='150'>미팅날짜</th>"
                + "<th width='100'>삭제</th>"
                +"</tr>");
-            for(row of resultRNG){                           // 향상된 for문 (list row : resultRNG) ==> 변수명은 상관없음
+            for(row of resultRNG){                     	// 향상된 for문 (list row : resultRNG) ==> 변수명은 상관없음
 //                console.log(row);                        // 데이터가 잘 넘어왔는지 확인
-            	console.log(row['meetingTime'].toString());
+               console.log(row['meetingTime'].toString());
                var tr = $("<tr/>");                        // <tr/> 객체 생성
                var roomNumber = $("<td width='150'/>").html(row['RoomNumber']);   
                tr.append(roomNumber);
@@ -60,20 +61,18 @@ $(document).ready(function() {
 
     // ############ 런닝구 관리 메뉴를 클릭했을 때  ############
     $('#adminRNG').click(function(evt){
-       evt.preventDefault();            // a태그 링크 기능 무력화
+       evt.preventDefault();               // a태그 링크 기능 무력화
        evt.stopPropagation();            // a태그 링크 기능 무력화
        //alert("런닝구 관리 클릭");
-       $("h1").hide();               // 페이지명 안보이게 변경
-       $("#h1RNG").show();            // 페이지명 보이게 변경
+       $("h1").hide();                         // 페이지명 안보이게 변경
+       $("#h1RNG").show();             // 페이지명 보이게 변경
        
-       $("table").hide();               // 모든 리스트 테이블을 삭제
+       $("table").hide();                             // 모든 리스트 테이블을 삭제
        $("#adminRNGList").show();         // 런닝구 리스트 테이블만 보임으로 변경
 
-       $(".divHide").hide();            // 모든 정렬 안보이게 변경
-       $(".sortRNG").show();            // 런닝구 정렬만 보이게 변경
-       $(".float-right").hide();            // 상품 추가하기 안보이게 변경
-//       $(".sortBST").css("display","none");   // 왼쪽 상단에 sort 콤보박스 안보이게 css 변경
-//       $(".sortRNG").css("display","block");   // 왼쪽 상단에 sort 콤보박스 보이게 css 변경
+       $(".divHide").hide();                  // 모든 정렬 안보이게 변경
+       $(".sortRNG").show();              // 런닝구 정렬만 보이게 변경
+       $(".float-right").hide();             // 상품 추가하기 안보이게 변경
       adminRNGList();                     // 리스트 출력 함수 호출
     }); //end click 
     
@@ -114,9 +113,9 @@ $(document).ready(function() {
                + "<th width='150'>좋아요수</th>"
                + "<th width='100'>삭제</th>"
                +"</tr>");
-            for(row of resultBST){                           // 향상된 for문 (list row : resultBST) ==> 변수명은 상관없음
+            for(row of resultBST){                      // 향상된 for문 (list row : resultBST) ==> 변수명은 상관없음
                console.log(row);                           // 데이터가 잘 넘어왔는지 확인
-               var tr = $("<tr/>");                        // <tr/> 객체 생성
+               var tr = $("<tr/>");                         // <tr/> 객체 생성
                var boardID = $("<td width='150' />").text(row.boardID);   
                tr.append(boardID);
                // ######### 게시글사진 출력 (디비 완성 전까지는 방번호 출력하기)
@@ -146,17 +145,17 @@ $(document).ready(function() {
     // ############ 자랑하기 관리 메뉴를 클릭했을 때  ############
     $('#adminBST').click(function(evt){
        evt.preventDefault();            //a태그 기능 무력화
-       evt.stopPropagation();            //a태그 기능 무력화
-       //alert("자랑하기 관리 클릭");
-       $("h1").hide();               // 페이지명 안보이게 변경
-       $("#h1BST").show();            // 페이지명 보이게 변경
-       
-       $("table").hide();            // 모든 리스트 테이블 안보이게
-       $("#adminBSTList").show();      // 런닝구 리스트 테이블만 보이게 변경
+       evt.stopPropagation();         //a태그 기능 무력화
 
-       $(".divHide").hide();         // 모든 정렬 안보이게 변경
+       $("h1").hide();               // 페이지명 안보이게 변경
+       $("#h1BST").show();    // 페이지명 보이게 변경
+       
+       $("table").hide();          				  // 모든 리스트 테이블 안보이게
+       $("#adminBSTList").show();       // 런닝구 리스트 테이블만 보이게 변경
+
+       $(".divHide").hide();     		  	  // 모든 정렬 안보이게 변경
        $(".float-right").hide();            // 상품 추가하기 보이게 변경
-       $(".sortBST").show();         // 자랑하기 정렬만 보이게 변경
+       $(".sortBST").show();      	      // 자랑하기 정렬만 보이게 변경
        
       adminBSTList();               // 리스트 출력 함수 호출
     }); //end click 
@@ -191,7 +190,6 @@ $(document).ready(function() {
             adminMemberList.empty();                        // 비워놓고 시작 ==> 다른 리스트가 있을 수 있으니까
             adminMemberList.append(                           // list 테이블 헤더
                "<tr>"
-               //+ "<th width='200'>프로필사진</th>"
                + "<th width='100'>ID</th>"
                + "<th width='300'>EMAIL</th>"
                + "<th width='100'>닉네임</th>"
@@ -203,12 +201,9 @@ $(document).ready(function() {
                + "<th width='150'>블랙리스트</th>"
                + "<th width='100'>삭제</th>"
                +"</tr>");
-            for(row of resultMember){                        // 향상된 for문 (list row : resultOrder) ==> 변수명은 상관없음
+            for(row of resultMember){               // 향상된 for문 (list row : resultOrder) ==> 변수명은 상관없음
                console.log(row);                           // 데이터가 잘 넘어왔는지 확인
-               var tr = $("<tr/>");                        // <tr/> 객체 생성
-               // ######### 프로필사진 출력 (디비 완성 전까지는 주석)
-//                     var member_realfname = $("<td id='member_realfname' width='200' />").html("<img src='resources/"+ row.member_realfname +">");
-//                     tr.append(member_realfname);
+               var tr = $("<tr/>");                         // <tr/> 객체 생성
                var memberID = $("<td id='memberID' width='100' />").html(row.memberID);   // td객체를 생성 ==> memberID를 td에 담는다
                tr.append(memberID);                                           // tr에 memberID를 담은 td를 추가
                var email = $("<td width='300' />").text(row.email);   
@@ -253,7 +248,7 @@ $(document).ready(function() {
     $('#adminMember').click(function(evt){
        evt.preventDefault();            //a태그 기능 무력화
        evt.stopPropagation();            //a태그 기능 무력화
-       //alert("회원 관리 클릭");
+
        $("h1").hide();               // 페이지명 안보이게 변경
        $("#h1Member").show();            // 페이지명 보이게 변경
        
@@ -352,7 +347,6 @@ $(document).ready(function() {
     $('#adminOrder').click(function(evt){
        evt.preventDefault();            //a태그 기능 무력화
        evt.stopPropagation();            //a태그 기능 무력화
-       //alert("쇼핑몰 주문 관리 클릭");
        $("h1").hide();                        // 페이지명 안보이게 변경
        $("#h1Order").show();            // 페이지명 보이게 변경
        

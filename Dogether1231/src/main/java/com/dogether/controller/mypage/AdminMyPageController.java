@@ -3,17 +3,22 @@ package com.dogether.controller.mypage;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dogether.domain.AdminVO;
 import com.dogether.domain.BoardVO;
 import com.dogether.domain.MemberVO;
 import com.dogether.domain.OrderVO;
 import com.dogether.domain.ProductsVO;
 import com.dogether.domain.RunningGooVO;
+import com.dogether.service.AdminLoginService;
 import com.dogether.service.BoardService;
 import com.dogether.service.MemberService;
 import com.dogether.service.OrderService;
@@ -35,9 +40,22 @@ public class AdminMyPageController {
 	@Autowired
 	ProductService productService;
 	
+	@Autowired
+	public AdminLoginService adminLoginService;
+	
 	// 첫페이지로 이동
 	@RequestMapping("/")
-	public String adminpage(Model m) {
+	public String adminpage(Model m, HttpSession session) {
+		// 세션체크
+//		String sessionok = (String) session.getAttribute("username");
+//		if(sessionok == null) {
+//			m.addAttribute("msg", "로그인이 필요한 서비스입니다.");
+//			return "redirect";
+//		} else if(!sessionok.equals("Admin")) {
+//			m.addAttribute("msg", "접근할 수 없는 페이지입니다.");
+//			return "redirect";
+//		}
+		
 		System.out.println("첫페이지로 이동!!");
 		int memberCount = memberService.getMemberCount();		//전체 회원 수 
 		int matchedCount = runningGooService.getMatchedCount();	//전체 매칭 건수

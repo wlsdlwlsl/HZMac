@@ -20,7 +20,7 @@ public class adminLoginController {
 	public AdminLoginService adminLoginService;
 	
 	@PostMapping(value = "adminlogin.do", produces = "application/text; charset=UTF-8")
-	public String adminlogin(AdminVO vo, HttpSession session ,Model m) {
+	public String adminlogin(AdminVO vo, HttpSession session, Model m) {
 		System.out.println(vo.getAdminID());
 		AdminVO result = adminLoginService.adminIdCheck_Login(vo);
 		String message = "님 로그인되었습니다.";
